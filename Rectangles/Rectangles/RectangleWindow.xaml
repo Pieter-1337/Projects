@@ -1,0 +1,40 @@
+﻿<Window x:Class="Rectangles.RectangleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rectangles"
+        mc:Ignorable="d"
+        Title="RectangleWindow" Height="550" Width="400">
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Label Margin="60 10 0 0" Height="25">Choose Angle</Label>
+            <TextBox Name="AngleValueBox" Margin="10 10 0 0" Height="25" Width="150"></TextBox>
+        </StackPanel>
+        <Button Margin="20 20 0 0" Width="300" HorizontalAlignment="Center" Height="30" Content="Transform"></Button>
+        <StackPanel Margin="20 0 0 0" Orientation="Horizontal" Width="300" HorizontalAlignment="Center">
+            <Label Width="100" HorizontalContentAlignment="Center" Height="30" Content="Before"></Label>
+            <Label Width="100" HorizontalContentAlignment="Center"  Height="30" Content="Layout"></Label>
+            <Label Width="100" HorizontalContentAlignment="Center" Height="30" Content="Render"></Label>
+        </StackPanel>
+
+        <StackPanel Margin="20 10 0 0" Orientation="Horizontal" Width="300" HorizontalAlignment="Center" Height="300">
+            <Rectangle Name="BeforeRectangle" Margin="25 0 0 0" Width="50" Height="75" VerticalAlignment="Top" Stroke="Black">
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="0"></RotateTransform>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Name="LayourRectangle" Margin="50 0 0 0" Width="50" Height="75" VerticalAlignment="Top" Stroke="Black">
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding ElementName=AngleValueBox, Path=Text}"></RotateTransform>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle Name="RenderRectangle" Margin="50 0 0 0" Width="50" Height="75" VerticalAlignment="Top" Stroke="Black">
+                <Rectangle.RenderTransform>
+                    <RotateTransform Angle="{Binding ElementName=AngleValueBox, Path=Text}"></RotateTransform>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+        </StackPanel>
+    </StackPanel>
+    
+</Window>

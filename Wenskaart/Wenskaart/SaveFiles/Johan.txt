@@ -1,0 +1,17 @@
+pack://application:,,,/Wenskaart;component/Images/kerstkaart.jpg
+4
+#FF00008B
+248
+85
+#FF00008B
+302
+175
+#FFA9A9A9
+162
+194
+#FF9932CC
+139
+258
+Prettige Feestdagen!
+Bauhaus 93
+23

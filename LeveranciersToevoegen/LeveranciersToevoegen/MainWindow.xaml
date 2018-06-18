@@ -1,0 +1,161 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:glob="clr-namespace:System.Globalization;assembly=mscorlib"
+        xmlns:local="clr-namespace:LeveranciersToevoegen"
+        xmlns:DbManagers="clr-namespace:DbManagers;assembly=DbManagers" x:Class="LeveranciersToevoegen.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1500" Width="400" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="plantViewSource" d:DesignSource="{d:DesignInstance {x:Type DbManagers:Plant}, CreateList=True}"/>
+        <Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="Background" Value="Red"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <ControlTemplate x:Key="ValidationTemplate">
+            <StackPanel Orientation="Vertical">
+                <AdornedElementPlaceholder />
+                <TextBlock Text="Gelieve in te vullen" Foreground="Red"></TextBlock>
+            </StackPanel>
+        </ControlTemplate>
+        
+    </Window.Resources>
+    <ScrollViewer>
+        <StackPanel>
+
+            <StackPanel Orientation="Horizontal" Height="230">
+
+                <StackPanel x:Name="Labels" Width="150" Orientation="Vertical" HorizontalAlignment="Left" Margin="0 0 0 0">
+                    <StackPanel Margin="50 52 0 0" HorizontalAlignment="Left">
+                        <Label Content="Naam:" Width="150" Height="30" Margin="0 5" FontSize="15"/>
+                        <Label Content="Adres:" Width="150" Height="30" Margin="0 5" FontSize="15"/>
+                        <Label Content="Postcode:" Width="150" Height="30" Margin="0 5" FontSize="15"/>
+                        <Label Content="Plaats:" Width="150" Height="30" Margin="0 5" FontSize="15"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel x:Name="InputFields" Width="200" Orientation="Vertical" Margin="0 50 0 0">
+                    <TextBox x:Name="NaamTxtBox" Margin="0 5" Height="30" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="AdresTxtBox" Margin="0 5" Height="30" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="PostcodeTxtBox" Margin="0 5" Height="30" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="PlaatsTxtBox" Margin="0 5" Height="30" VerticalContentAlignment="Center"/>
+                </StackPanel>
+
+            </StackPanel>
+
+
+
+            <StackPanel Height="100">
+                <StackPanel Orientation="Horizontal" Height="65" HorizontalAlignment="Center">
+                    <Button x:Name="ToevoegenButton"  Width="150" Height="30" Content="Toevoegen Leverancier" Click="AddLeverancier_Click"/>
+                    <Button x:Name="EindejaarsKortingButton" Width="150" Height="30" Content="Eindejaarskorting" Margin="10 0 0 0" Click="EindejaarsKorting_Click"/>
+                </StackPanel>
+                <Label x:Name="MessageLabel" Height="30" HorizontalAlignment="Center" Width="400" HorizontalContentAlignment="Center"/>
+            </StackPanel>
+
+            <Separator Margin="0 0 0 30"/>
+
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                    <Label x:Name="LeveranciersNrLabel" Content="Planten verwijderen van LeveranciersNr" Margin="50 0 0 0" />
+                    <TextBox Width="39" x:Name="LeveranciersNummerTeVervangen" VerticalContentAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                    <Label x:Name="LeveranciersNr2Label" Content="Planten toevoegen aan LeveranciersNr " Margin="50 0 0 0" />
+                    <TextBox Width="40" x:Name="LeveranciersNummer2TeVervangen" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <Button Content="Verwissel planten tussen leveranciers" Width="300" Height="35" Click="VerwisselPlantenVanLeverancier_Click"/>
+            </StackPanel>
+
+            <Separator Margin="0 30 0 0"/>
+
+            <StackPanel Margin="0 30 0 0">
+                <StackPanel Orientation="Horizontal" Margin="50 0 0 0" >
+                    <Label  x:Name="GemiddeldeKostprijsSoortLabel"  Content="Soort"/>
+                    <TextBox x:Name="GemiddeldeKostprijsTextBox" Width="200" Margin="10 0 0 0" VerticalContentAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Button x:Name="GemiddeldeKostprijsButton" Content="Bereken gemiddelde kostprijs van de soort" Width="300" Height="35" Margin="00 10 0 0" Click="GemiddeldeKostprijsSoort_Click"/>
+                    <Label x:Name="GemiddeldeKostprijsLabel" Height="25" VerticalContentAlignment="Center" Width="275"/>
+                </StackPanel>
+            </StackPanel>
+
+            <Separator Margin="0 0 0 10"/>
+
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Plantnummer" Margin="50 0 0 0"/>
+                    <TextBox x:Name="ZoekPlantNrTextbox" Width="30" Margin="10 0 10 0"/>
+                    <Button Content="Opzoeken" Width="100" Click="ZoekPlantNr_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Width="75" HorizontalAlignment="Left" Margin="50 0 0 0 ">
+                        <Label Content="Naam: " />
+                        <Label Content="Soort: " />
+                        <Label Content="Leverancier: "/>
+                        <Label Content="Kleur: "/>
+                        <Label Content="Kostprijs: "/>
+                    </StackPanel>
+                    <StackPanel Width="200" Margin="20 0 0 0" HorizontalAlignment="Left">
+                        <Label x:Name="NaamLabel"/>
+                        <Label x:Name="SoortLabel"/>
+                        <Label x:Name="LeverancierLabel"/>
+                        <Label x:Name="KleurLabel"/>
+                        <Label x:Name="KostprijsLabel"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <Separator Margin="0 0 0 10"/>
+
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Kies een soort" Margin="50 10 0 0"/>
+                    <ComboBox x:Name="SoortenBox" Margin="30 10 0 20" Width="150" SelectionChanged="ComboBoxSelectionChanged"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <ListBox x:Name="PlantenLijst" Height="200" Width="120" HorizontalAlignment="Left" Margin="10 0 0 30" SelectionChanged="SelectionPlant_Changed"/>
+                    <StackPanel Orientation="Vertical" Margin="10 0 0 0">
+                        
+                        <Label x:Name="PlantNummerLabel" Content="Plantnummer"/>
+                        <TextBox Width="200" x:Name="PlantNummerTextBox" Focusable="false" />
+
+                        <Label x:Name="LeverancierNaamLabel" Content="Leverancier"/>
+                        <TextBox Width="200" x:Name="LeverancierTextBox" Focusable="False" />
+
+                        <Label x:Name="KleurLabel2" Content="Kleur"/>
+                        <TextBox Width="200" x:Name="KleurTextBox" Style="{StaticResource textBoxInError}" Validation.ErrorTemplate="{StaticResource ValidationTemplate}"  TextChanged="TextBox_OnChanged">
+                            <TextBox.Text>
+                                <Binding Path="0" ConverterCulture="{x:Static glob:CultureInfo.CurrentCulture}" StringFormat="c">
+                                    <Binding.ValidationRules>
+                                        <local:KleurRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBlock Text="" Name="KleurErrorTextBlock"></TextBlock>
+
+                        <Label x:Name="PrijsLabel" Content="Prijs"/>
+                        <TextBox x:Name="PrijsTextbox" Width="200" TextChanged="TextBox_OnChanged">
+      
+                        </TextBox>
+                        <TextBlock Text="" Name="PrijsErrorTextBlock"></TextBlock>
+
+                        <Button x:Name="SavePlantButton" Content="Save Plant" Margin="0 10 0 0 " Click="SavePlant_Click"/>
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>

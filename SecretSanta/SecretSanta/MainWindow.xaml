@@ -1,0 +1,28 @@
+﻿<Window x:Class="SecretSanta.SecretSantaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SecretSanta"
+        mc:Ignorable="d"
+        Title="SecretSanta" Height="550" Width="525">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/backgroundKerstmis.jpg"></ImageBrush>
+    </Window.Background>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Height="30" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontWeight="ExtraBold" FontSize="14">Geef alle namen in van de personen die meedoen aan de Secret Santa</TextBlock>
+                <StackPanel Orientation="Horizontal" Height="50">
+                    <TextBox Name="AddNameBox" Margin="10" Width="200" Height="30" VerticalAlignment="Top" TextAlignment="left" VerticalContentAlignment="Center" Opacity="0.6" FontWeight="ExtraBold"></TextBox>
+                    <Button Name="AddNameButton" Margin="10" Width="100" Height="30" VerticalAlignment="Top" Content="Add Name" Click="AddName_Click" IsDefault="True" BorderBrush="White" Foreground="Black" FontWeight="ExtraBold"></Button>
+                    <Button Name="RemoveNameButton" Margin="0 10 0 0" Width="100" Height="30" VerticalAlignment="Top" Content="Remove Name" Click="RemoveName_Click" BorderBrush="White" Foreground="Black" FontWeight="ExtraBold"></Button>
+                </StackPanel>
+                <Label Margin="10 0 0 0" Name="NamenLijstLabel" Width="200" Height="30" HorizontalAlignment="Left" Foreground="White" FontWeight="ExtraBold" FontSize="14">Ingevoerde namen</Label>
+                <StackPanel Orientation="Horizontal" Height="300">
+                    <ListBox Name="NamenLijstBox" Margin="10 0 0 0" Width="200" Opacity="0.6" Foreground="Black" FontWeight="ExtraBold"></ListBox>
+                    <ListBox Name="GekozenKoppelsListBlock" Margin="10 0 0 0" Width="270" Opacity="0.6" Foreground="Black" FontWeight="ExtraBold"></ListBox>
+                </StackPanel>
+            <Button Name="MaakSecretSantaButton" Margin="10 10 0 0" Height="30" Width="150" HorizontalAlignment="Left" Click="MaakSecretSanta_Click" BorderBrush="White" Foreground="Black" FontWeight="ExtraBold">Maak Secret Santa</Button>
+            </StackPanel>
+        </ScrollViewer>
+</Window>

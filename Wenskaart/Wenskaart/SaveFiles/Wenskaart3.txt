@@ -1,0 +1,23 @@
+pack://application:,,,/Wenskaart;component/Images/kerstkaart.jpg
+6
+#FF0000FF
+248
+91
+#FFD2691E
+310
+153
+#FF008B8B
+181
+172
+#FF8B0000
+227
+256
+#FF000000
+249
+172
+#FF000000
+138
+252
+Prettige Feestdagen!
+Arial
+20

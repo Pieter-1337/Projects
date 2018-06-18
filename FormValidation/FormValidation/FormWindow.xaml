@@ -1,0 +1,53 @@
+﻿<Window x:Class="FormValidation.FormWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FormValidation"
+        mc:Ignorable="d"
+        Title="FormWindow" Height="550" Width="525" Closing="Closing_Click">
+    <Window.CommandBindings>
+        <CommandBinding Command="New" Executed="NewExecuted_Click"></CommandBinding>
+        <CommandBinding Command="Open" Executed="OpenExecuted_Click"></CommandBinding>
+        <CommandBinding Command="Save" Executed="SaveExecuted_Click"></CommandBinding>
+    </Window.CommandBindings>
+    
+    <StackPanel>
+        <Menu Height="25">
+            <MenuItem Header="New" Height="25" Width="50" HorizontalAlignment="Center" Command="New"></MenuItem>
+            <MenuItem Header="Open" Height="25" Width="50" HorizontalContentAlignment="Center" Command="Open"></MenuItem>
+            <MenuItem Header="Save" Height="25" Width="50" HorizontalContentAlignment="Center" Command="Save"></MenuItem>
+            
+        </Menu>
+        <Label Margin="50 10 0 0">Form</Label>
+
+        <Border BorderBrush="Black" BorderThickness="1" Width="300" Margin="0 10 0 0">
+            <StackPanel Orientation="Vertical" Width="300">
+
+                <StackPanel Orientation="Horizontal" >
+                    <Label Name="LabelName" Height="30" Width="100" HorizontalContentAlignment="Center">Name</Label>
+                    <TextBox Name="NameBox" Height="25" Width="190"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <Label Name="LabelEmail" Height="30" Width="100" HorizontalContentAlignment="Center">Email</Label>
+                    <TextBox Name="EmailBox" Height="25" Width="190"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <Label Name="LabelBirthDate" Height="30" Width="100" HorizontalContentAlignment="Center">Birth Date</Label>
+                    <DatePicker Name="BirtDatePicker"></DatePicker>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <Label Name="LabelAdress" Height="30" Width="100" HorizontalContentAlignment="Center">Adress</Label>
+                    <TextBox Name="AdressBox" Height="25" Width="190"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <Label Name="LabelCity" Height="30" Width="100" HorizontalContentAlignment="Center">City</Label>
+                    <TextBox Name="CityBox" Height="25" Width="190"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                    <Button Width="150" Height="30" Margin="10" HorizontalAlignment="Left" Content="Save" HorizontalContentAlignment="Center" Command="Save"></Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</Window>

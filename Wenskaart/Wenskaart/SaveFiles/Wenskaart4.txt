@@ -1,0 +1,23 @@
+pack://application:,,,/Wenskaart;component/Images/kerstkaart.jpg
+6
+#FF32CD32
+211
+123
+#FF66CDAA
+279
+117
+#FF00FA9A
+164
+187
+#FF00FA9A
+238
+178
+#FFFFDEAD
+286
+231
+#FFEEE8AA
+157
+252
+Prettige Feestdagen!
+Impact
+21
